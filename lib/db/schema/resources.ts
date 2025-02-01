@@ -5,12 +5,22 @@ import { z } from "zod";
 
 import { nanoid } from "@/lib/utils";
 
+// Maybe in the future we can add complementary data beyond the urls of the documentation
+export enum ResourceType {
+  PDF = "pdf",
+  URL = "url",
+  TEXT = "text",
+}
+
 export const resources = pgTable("resources", {
   id: varchar("id", { length: 191 })
     .primaryKey()
     .$defaultFn(() => nanoid()),
   content: text("content").notNull(),
-
+  title: text("title").notNull(),
+  description: text("description").notNull(),
+  type: text("type").notNull(),
+  url: text("url"),
   createdAt: timestamp("created_at")
     .notNull()
     .default(sql`now()`),
