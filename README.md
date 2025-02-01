@@ -1,10 +1,12 @@
 # AI Agent for Tailwind CSS Documentation
 
-This project implements an AI agent that utilizes Retrieval-Augmented Generation (RAG) to access the full documentation of Tailwind CSS version 3. The agent can efficiently retrieve and provide information from the documentation based on user queries.
+This project implements an AI agent that utilizes Retrieval-Augmented Generation (RAG) to access the full documentation of Tailwind CSS version 3. The agent can efficiently retrieve and provide information from the documentation based on user queries. It also uses web scraping to get the latest information from the documentation.
 
 ## Overview
 
 The AI agent is designed to read and process the Tailwind CSS documentation, allowing users to ask questions and receive accurate responses based on the official documentation. The project leverages embeddings to enhance the retrieval process, ensuring that the agent can quickly access relevant information.
+
+The project is deployed on Vercel and can be accessed at https://tailwindcss-ai-agent.vercel.app/
 
 ## Features
 
