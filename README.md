@@ -11,7 +11,7 @@ The AI agent is designed to read and process the Tailwind CSS documentation, all
 - **RAG Implementation**: Combines retrieval and generation techniques to provide accurate responses.
 - **Embeddings**: Each URL from the Tailwind CSS documentation is stored as a resource in the database, with corresponding embeddings for efficient retrieval.
 - **API Endpoint**: A GET endpoint that reads `urls.md`, which contains all URLs for the Tailwind CSS documentation.
-
+- **Web Scraping**: The webscrapping API is available at `http://localhost:3000/api/tailwind`.
 ## Getting Started
 
 ### Prerequisites
@@ -19,6 +19,8 @@ The AI agent is designed to read and process the Tailwind CSS documentation, all
 - Node.js (version >= v18.17.0)
 - npm or yarn
 - A database (e.g., PostgreSQL) for storing resources and embeddings
+- A Firecrawl API key (https://www.firecrawl.dev/)
+- A OpenAI API key (https://openai.com/index/openai-api/)
 
 ### Environment Variables
 
