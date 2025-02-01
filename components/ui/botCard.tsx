@@ -5,9 +5,9 @@ import { FaRobot } from "react-icons/fa";
 import { PiCoffeeFill } from "react-icons/pi";
 
 export const BotCard = ({ message }: { message: Message }) => {
-    return <div className='bg-gray-100 rounded-md p-4 border border-gray-300 overflow-x-auto'>
+    return <div className='bg-gray-200 rounded-md p-4 border border-gray-300 overflow-x-auto'>
         <div className="flex items-center mb-2">
-            <div className="w-8 h-8 bg-white rounded-full mr-2 flex items-center justify-center"><FaRobot /></div>
+            <div className="w-8 h-8 bg-black rounded-full mr-2 flex items-center justify-center"><FaRobot color='#fff' /></div>
             <div className="font-bold">AI</div>
         </div>
         <ReactMarkdown>{message.content}</ReactMarkdown>
