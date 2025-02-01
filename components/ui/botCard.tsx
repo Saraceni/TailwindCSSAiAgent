@@ -5,14 +5,14 @@ import { FaRobot } from "react-icons/fa";
 import { PiCoffeeFill } from "react-icons/pi";
 
 export const BotCard = ({ message }: { message: Message }) => {
-    return <div className=' bg-gray-100 rounded-md p-4 border border-gray-300'>
+    return <div className='bg-gray-100 rounded-md p-4 border border-gray-300 overflow-x-auto'>
         <div className="flex items-center mb-2">
             <div className="w-8 h-8 bg-white rounded-full mr-2 flex items-center justify-center"><FaRobot /></div>
             <div className="font-bold">AI</div>
         </div>
         <ReactMarkdown>{message.content}</ReactMarkdown>
         {!!message?.toolInvocations?.length && message.content.length === 0 && <div className='flex items-center space-x-2'>
-            <span className="italic font-light">Let me get back to you with the answer while I drink my coffee and read the docs...</span><PiCoffeeFill color='#717171' />
+            <span className="italic font-light">Let me get back to you with the answer while I drink my coffee and read the docs...</span><PiCoffeeFill className='flex-shrink-0' color='#717171' />
         </div>}
         <div>
             {message?.experimental_attachments
