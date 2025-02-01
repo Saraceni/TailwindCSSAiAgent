@@ -16,7 +16,7 @@ The AI agent is designed to read and process the Tailwind CSS documentation, all
 
 ### Prerequisites
 
-- Node.js (version X.X.X)
+- Node.js (version >= v18.17.0)
 - npm or yarn
 - A database (e.g., PostgreSQL) for storing resources and embeddings
 
@@ -38,7 +38,7 @@ FIRECRAWL_API_KEY=<your_firecrawl_api_key>
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
+   git clone https://github.com/Saraceni/TailwindCSSAiAgent.git
    cd your-repo-name
    ```
 
