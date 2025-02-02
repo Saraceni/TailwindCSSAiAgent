@@ -28,7 +28,7 @@ export default function Chat() {
             <div className="w-8 h-8 bg-black rounded-full mr-2 flex items-center justify-center"><FaRobot color='#fff' /></div>
             <div className="font-bold">AI</div>
           </div>
-          <p>Hello, I'm your Tailwind CSS AI Agent. How can I help you today?</p>
+          <p>Hello, I&apos;m your Tailwind CSS AI Agent. How can I help you today?</p>
         </div>
         {messages.map(m => (
           <div key={m.id} className="whitespace-pre-wrap">
