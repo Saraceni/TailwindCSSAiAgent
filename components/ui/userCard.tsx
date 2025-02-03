@@ -10,7 +10,7 @@ export const UserCard = ({ message }: { message: Message }) => {
             <div className="w-8 h-8 bg-gray-300 rounded-full mr-2 flex items-center justify-center"><IoPerson /></div>
             <div className="font-bold">User</div>
         </div>
-        <ReactMarkdown>{message.content}</ReactMarkdown>
+        <ReactMarkdown className="font-actor">{message.content}</ReactMarkdown>
         <div>
             {message?.experimental_attachments
                 ?.filter(attachment =>
