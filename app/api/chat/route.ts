@@ -23,22 +23,40 @@ If no relevant information is found in the tool calls, respond, "Sorry, I don't 
 
 
 export async function POST(req: Request) {
-  const { messages } = await req.json();
+  try {
+    const { messages } = await req.json();
 
-  const result = streamText({
-    model: openai('gpt-4-turbo'),
-    system: systemPrompt,
-    messages,
-    tools: {
-      searchTailwindDocs: {
-        description: 'Search the Tailwind CSS v3 documentation for information',
-        parameters: z.object({
-          question: z.string().describe('the users question'),
-        }),
-        execute: async ({ question }) => findRelevantContent(question),
+    const result = streamText({
+      model: openai('gpt-4o-mini'),
+      system: systemPrompt,
+      messages,
+      tools: {
+        searchTailwindDocs: {
+          description: 'Search the Tailwind CSS v3 documentation for information',
+          parameters: z.object({
+            question: z.string().describe('the users question'),
+          }),
+          execute: async ({ question }) => findRelevantContent(question),
+        }
+      }
+    });
+
+    for await (const part of result.fullStream) {
+      switch (part.type) {
+        // ... handle other part types
+
+        case 'error': {
+          const error = part.error
+          // This works
+          console.error(error)
+          break
+        }
       }
     }
-  });
 
-  return result.toDataStreamResponse();
+    return result.toDataStreamResponse();
+  } catch (error) {
+    console.error('Error processing request:', error); // Log the error for debugging
+    return new Response('Internal Server Error', { status: 500 }); // Return a 500 response
+  }
 }
