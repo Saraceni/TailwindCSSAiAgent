@@ -22,7 +22,7 @@ export default function Chat() {
       <div className='flex flex-col justify-center items-start bg-white bg-opacity-50 h-full'>
         <div className="flex flex-col justify-center items-center w-full p-4 space-y-1 shadow-lg z-2 relative bg-[#67727E]">
           <h1 className="font-julius text-xl md:text-2xl font-bold text-black">Tailwind CSS AI Agent</h1>
-          <p className="font-actor text-sm text-[#383737] text-center">Ask Tailwind CSS v3 or v4 documentation and get answers in seconds. If you don't specify the version, I'll use the latest version (v4).</p>
+          <p className="font-actor text-sm text-[#383737] text-center">Ask Tailwind CSS v3 or v4 documentation and get answers in seconds. If you don&apos;t specify the version, I&apos;ll use the latest version (v4).</p>
         </div>
         <div className="space-y-4 overflow-y-auto px-3 md:px-2 pt-4 pb-24 w-full flex-1 z-2">
           <div className='bg-gray-200 rounded-md p-4 border border-gray-300 overflow-x-auto'>
