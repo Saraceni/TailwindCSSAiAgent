@@ -6,8 +6,8 @@ import { embeddings } from '../db/schema/embeddings';
 import { resources } from '../db/schema/resources';
 
 const embeddingModel = openai.embedding('text-embedding-ada-002');
-export const DEFAULT_CHUNK_SIZE = 4500;
-export const DEFAULT_OVERLAP = 800;
+export const DEFAULT_CHUNK_SIZE = 10000;
+export const DEFAULT_OVERLAP = 1000;
 
 export const generateChunks = (text: string, chunkSize: number = DEFAULT_CHUNK_SIZE, overlap: number = DEFAULT_OVERLAP): string[] => {
     const chunks = [];
@@ -96,12 +96,18 @@ export const findRelevantContent = async (userQuery: string, source: string) => 
         embeddings.embedding,
         userQueryEmbedded,
     )})`;
-    const similarGuides = await db
-        .select({ name: embeddings.content, similarity})
+    const similarEmbeddings = await db
+        .select({ content: embeddings.content, similarity, resourceId: resources.id, resourceContent: resources.content, resourceTitle: resources.title, resourceDescription: resources.description })
         .from(embeddings)
         .innerJoin(resources, eq(embeddings.resourceId, resources.id)) // Join the resources table
         .where(and(gt(similarity, 0.7), eq(resources.source, source)))
         .orderBy(t => desc(t.similarity))
-        .limit(3)
-    return similarGuides;
+        .limit(4)
+    var result: { content: string, id: string, title: string, description: string }[] = []
+    for (const embedding of similarEmbeddings) {
+        if(!result.find(r => r.id === embedding.resourceId)) {  
+            result.push({ content: embedding.resourceContent, id: embedding.resourceId, title: embedding.resourceTitle, description: embedding.resourceDescription })
+        }
+    }
+    return result;
 };
