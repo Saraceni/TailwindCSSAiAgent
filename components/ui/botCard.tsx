@@ -10,10 +10,10 @@ export const BotCard = ({ message }: { message: Message }) => {
             <div className="font-bold">AI</div>
         </div>
         <ReactMarkdown className="font-actor">{message.content}</ReactMarkdown>
-        {!!message?.toolInvocations?.length && message.toolInvocations[0].toolName === 'searchTailwindDocsV3' && message.content.length === 0 && <div className='flex items-center space-x-2'>
+        {!!message?.toolInvocations?.length && message.toolInvocations.some(toolInvocation => toolInvocation.toolName === 'searchTailwindDocsV3') && message.content.length === 0 && <div className='flex items-center space-x-2'>
             <span className="italic font-light font-actor">Let me get back to you with the answer while I drink my coffee and read the documentation of Tailwind CSS v3...</span><PiCoffeeFill className='flex-shrink-0' color='#717171' />
         </div>}
-        {!!message?.toolInvocations?.length && message.toolInvocations[0].toolName === 'searchTailwindDocsV4' && message.content.length === 0 && <div className='flex items-center space-x-2'>
+        {!!message?.toolInvocations?.length && message.toolInvocations.some(toolInvocation => toolInvocation.toolName === 'searchTailwindDocsV4') && message.content.length === 0 && <div className='flex items-center space-x-2'>
             <span className="italic font-light font-actor">Let me get back to you with the answer while I drink my coffee and read the documentation of Tailwind CSS v4...</span><PiCoffeeFill className='flex-shrink-0' color='#717171' />
         </div>}
         <div>

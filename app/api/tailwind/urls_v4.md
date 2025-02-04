@@ -1,4 +1,8 @@
-https://tailwindcss.com/docs/installation
+https://tailwindcss.com/docs/installation/using-vite
+https://tailwindcss.com/docs/installation/using-postcss
+https://tailwindcss.com/docs/installation/tailwind-cli
+https://tailwindcss.com/docs/installation/framework-guides
+https://tailwindcss.com/docs/installation/play-cdn
 https://tailwindcss.com/docs/editor-setup
 https://tailwindcss.com/docs/compatibility
 https://tailwindcss.com/docs/upgrade-guide
