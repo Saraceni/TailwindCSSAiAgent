@@ -10,11 +10,11 @@ import { DEFAULT_CHUNK_SIZE, DEFAULT_OVERLAP, generateEmbeddings } from '../ai/e
 import { embeddings as embeddingsTable } from '../db/schema/embeddings';
 
 export const createResource = async (input: NewResourceParams) => {
-  const { title, content, description, type, url } = insertResourceSchema.parse(input);
+  const { title, content, description, type, url, source } = insertResourceSchema.parse(input);
 
   const [resource] = await db
     .insert(resources)
-    .values({ title, content, description, type, url })
+    .values({ title, content, description, type, url, source })
     .returning();
 
   const embeddings = await generateEmbeddings(content);

@@ -21,6 +21,7 @@ export const resources = pgTable("resources", {
   description: text("description").notNull(),
   type: text("type").notNull(),
   url: text("url"),
+  source: text("source").notNull().default("tailwind_css_v3"),
   createdAt: timestamp("created_at")
     .notNull()
     .default(sql`now()`),
