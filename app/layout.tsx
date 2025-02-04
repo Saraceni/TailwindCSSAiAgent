@@ -7,10 +7,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Tailwind CSS AI Agent",
-  description: "Ask Tailwind CSS v3 documentation and get answers in seconds",
+  description: "Ask Tailwind CSS documentation and get answers in seconds",
   openGraph: {
     title: "Tailwind CSS AI Agent",
-    description: "Ask Tailwind CSS v3 documentation and get answers in seconds",
+    description: "Ask Tailwind CSS documentation and get answers in seconds",
     url: "https://tailwind-css-ai-agent.vercel.app/", // Replace with your actual URL
     images: [
       {

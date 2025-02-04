@@ -6,7 +6,7 @@ import { z } from 'zod';
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 
-const systemPrompt = `You are an AI assistant designed to help users understand and utilize Tailwind CSS v3. Your primary role is to provide accurate and helpful information based on the official Tailwind CSS documentation. 
+const systemPrompt = `You are an AI assistant designed to help users understand and utilize Tailwind CSS. Your primary role is to provide accurate and helpful information based on the official Tailwind CSS documentation. 
 
 When users ask questions, you should:
 1. Provide clear and concise explanations of Tailwind CSS concepts, utilities, and components.
@@ -15,11 +15,12 @@ When users ask questions, you should:
 4. If a user asks for code examples, provide relevant snippets that demonstrate the use of Tailwind CSS classes effectively.
 5. Encourage users to refer to the official documentation for more detailed information when necessary.
 
-Your responses should be informative, friendly, and focused on helping users achieve their design goals using Tailwind CSS v3.
+You have access to the Tailwind CSS documentation of version 3 (v3) and version 4 (v4). The version 4 is the latest version.
+Your responses should be informative, friendly, and focused on helping users achieve their design goals using Tailwind CSS.
 Only respond to questions using information from tool calls.
-If the user asks questions that are not related to Tailwind CSS v3, respond, "Sorry, I don't know. Please ask a question related to Tailwind CSS v3.
-If no relevant information is found in the tool calls, respond, "Sorry, I don't know.`
-
+If the user asks questions that are not related to Tailwind CSS v3 or v4, respond, "Sorry, I don't know. Please ask a question related to Tailwind CSS v3 or v4.
+If no relevant information is found in the tool calls, respond, "Sorry, I don't know.
+If the user don't mention the version of Tailwind CSS, use the version 4 (v4) documentation.`
 
 
 export async function POST(req: Request) {
@@ -31,12 +32,19 @@ export async function POST(req: Request) {
       system: systemPrompt,
       messages,
       tools: {
-        searchTailwindDocs: {
-          description: 'Search the Tailwind CSS v3 documentation for information',
+        searchTailwindDocsV3: {
+          description: 'Search the Tailwind CSS version 3 (v3) documentation for information',
           parameters: z.object({
             question: z.string().describe('the users question'),
           }),
-          execute: async ({ question }) => findRelevantContent(question),
+          execute: async ({ question }) => findRelevantContent(question, 'tailwind_css_v3'),
+        },
+        searchTailwindDocsV4: {
+          description: 'Search the Tailwind CSS version 4 (v4) documentation for information',
+          parameters: z.object({
+            question: z.string().describe('the users question'),
+          }),
+          execute: async ({ question }) => findRelevantContent(question, 'tailwind_css_v4'),
         }
       }
     });

@@ -1,6 +1,6 @@
 # AI Agent for Tailwind CSS Documentation
 
-This project implements an AI agent that utilizes Retrieval-Augmented Generation (RAG) to access the full documentation of Tailwind CSS version 3. The agent can efficiently retrieve and provide information from the documentation based on user queries. It also uses web scraping to get the latest information from the documentation.
+This project implements an AI agent that utilizes Retrieval-Augmented Generation (RAG) to access the full documentation of Tailwind CSS version 3 and version 4. The agent can efficiently retrieve and provide information from the documentation based on user queries. It also uses web scraping to get the latest information from the documentation.
 
 ## Overview
 
@@ -12,7 +12,7 @@ The project is deployed on Vercel and can be accessed at https://tailwindcss-ai-
 
 - **RAG Implementation**: Combines retrieval and generation techniques to provide accurate responses.
 - **Embeddings**: Each URL from the Tailwind CSS documentation is stored as a resource in the database, with corresponding embeddings for efficient retrieval.
-- **API Endpoint**: A GET endpoint that reads `urls.md`, which contains all URLs for the Tailwind CSS documentation.
+- **API Endpoint**: A GET endpoint that reads `urls_v3.md` and `urls_v4.md`, which contains all URLs for the Tailwind CSS v3 and v4 documentation.
 - **Web Scraping**: The webscrapping API is available at `http://localhost:3000/api/tailwind`.
 ## Getting Started
 
@@ -66,12 +66,13 @@ FIRECRAWL_API_KEY=<your_firecrawl_api_key>
 
 2. **Access the web scrapping API**:
    - The webscrapping API is available at `http://localhost:3000/api/tailwind`.
-   - The GET endpoint reads `urls.md` and creates embeddings for each page.
+   - The GET endpoint reads `urls_v3.md` or `urls_v4.md` and creates embeddings for each page.
+   - You need to pass a query parameter `version` with the value `v3` or `v4`. For example: `http://localhost:3000/api/tailwind?version=v3`.
 
 ### API Endpoint
 
 - **GET /api/tailwind**
-  - Reads `urls.md`, which contains all URLs for the Tailwind CSS documentation.
+  - Reads `urls_v3.md` or `urls_v4.md`, which contains all URLs for the Tailwind CSS v3 or v4 documentation.
   - Creates embeddings for each resource in the database.
 
 ### Database Schema
