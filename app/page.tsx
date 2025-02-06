@@ -15,7 +15,7 @@ const ExampleQuestions = [
 ]
 
 export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({ maxSteps: 4 });
+  const { messages, input, handleInputChange, handleSubmit } = useChat({ maxSteps: 5 });
 
   return (
     <div className="flex flex-col w-screen h-screen stretch overflow-hidden bg-[url('/background_full.jpg')] bg-cover bg-center relative">
