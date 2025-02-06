@@ -18,7 +18,7 @@ export const BotCard = ({ message }: { message: Message }) => {
             <span className="italic font-light font-actor">Let me get back to you with the answer while I drink my coffee and read the documentation of Tailwind CSS v4...</span><PiCoffeeFill className='flex-shrink-0' color='#717171' />
         </div>}
         {!!message?.toolInvocations?.length && message.toolInvocations.some(toolInvocation => toolInvocation.toolName === 'searchUpgradeGuide') && message.content.length === 0 && <div className='flex items-center space-x-2'>
-            <span className="italic font-light font-actor">I'm just gonna check the upgrade guide to be sure my answer is correct.</span><SlDocs className='flex-shrink-0' color='#717171' />
+            <span className="italic font-light font-actor">Im just gonna check the upgrade guide to be sure my answer is correct.</span><SlDocs className='flex-shrink-0' color='#717171' />
         </div>}
         <div>
             {message?.experimental_attachments
