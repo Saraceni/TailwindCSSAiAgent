@@ -109,5 +109,18 @@ export const findRelevantContent = async (userQuery: string, source: string) => 
             result.push({ content: embedding.resourceContent, id: embedding.resourceId, title: embedding.resourceTitle, description: embedding.resourceDescription })
         }
     }
-    return result;
+    return similarEmbeddings;
 };
+
+// Simple cache
+var upgradeGuideCache: string | undefined = undefined
+export const returnUpgradeGuide = async () => {
+    if(upgradeGuideCache) {
+        console.log('hit upgrade guide cache')
+        return upgradeGuideCache
+    } 
+    // title = Upgrade guide - Getting started - Tailwind CSS
+    const upgradeGuide = await db.select({ content: resources.content }).from(resources).where(eq(resources.title, "Upgrade guide - Getting started - Tailwind CSS"))
+    upgradeGuideCache = !!upgradeGuide.length ? upgradeGuide[0].content : undefined
+    return upgradeGuideCache
+}
