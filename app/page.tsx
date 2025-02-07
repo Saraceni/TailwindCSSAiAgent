@@ -1,11 +1,11 @@
 'use client';
 
 import { useChat } from 'ai/react';
-
 import { UserCard } from '@/components/ui/userCard';
 import { BotCard } from '@/components/ui/botCard';
 import { FaPaperPlane, FaRobot } from 'react-icons/fa';
 import Image from 'next/image';
+import { motion } from "motion/react"
 
 const ExampleQuestions = [
   'How to use CSS variables with Tailwind CSS?',
@@ -33,14 +33,18 @@ export default function Chat() {
             <p className="font-afacad text-lg">Hello, I&apos;m your Tailwind CSS AI Agent. How can I help you today?</p>
           </div>
           {messages.map(m => (
-            <div key={m.id} className="whitespace-pre-wrap z-2">
-              {m.role === 'user' ? <UserCard message={m} /> : <BotCard message={m} />}
-            </div>
+            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }}>
+              <div key={m.id} className="whitespace-pre-wrap z-2">
+                {m.role === 'user' ? <UserCard message={m} /> : <BotCard message={m} />}
+              </div>
+            </motion.div>
           ))}
           {messages.length === 0 && ExampleQuestions.map(q => (
+            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }}>
             <div key={q} className="whitespace-pre-wrap z-2 bg-[#474d5dcc] rounded-md p-[10px] text-[#ababab] text-center shadow-md cursor-pointer" onClick={() => append({ role: 'user', content: q })}>
               {q}
             </div>
+            </motion.div>
           ))}
         </div>
         <form onSubmit={(event) => { handleSubmit(event); }} className="fixed bottom-0 right-2 left-2 md:mx-auto md:max-w-screen-sm lg:max-w-screen-md p-2 mb-4 md:mb-8 border border-gray-300 bg-white rounded-md shadow-xl flex items-center">
