@@ -33,17 +33,17 @@ export default function Chat() {
             <p className="font-afacad text-lg">Hello, I&apos;m your Tailwind CSS AI Agent. How can I help you today?</p>
           </div>
           {messages.map(m => (
-            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }}>
-              <div key={m.id} className="whitespace-pre-wrap z-2">
+            <motion.div key={m.id} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }}>
+              <div className="whitespace-pre-wrap z-2">
                 {m.role === 'user' ? <UserCard message={m} /> : <BotCard message={m} />}
               </div>
             </motion.div>
           ))}
           {messages.length === 0 && ExampleQuestions.map(q => (
-            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }}>
-            <div key={q} className="whitespace-pre-wrap z-2 bg-[#474d5dcc] rounded-md p-[10px] text-[#ababab] text-center shadow-md cursor-pointer" onClick={() => append({ role: 'user', content: q })}>
-              {q}
-            </div>
+            <motion.div key={q}  initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }}>
+              <div className="whitespace-pre-wrap z-2 bg-[#474d5dcc] rounded-md p-[10px] text-[#ababab] text-center shadow-md cursor-pointer" onClick={() => append({ role: 'user', content: q })}>
+                {q}
+              </div>
             </motion.div>
           ))}
         </div>
