@@ -5,12 +5,12 @@ import { IoPerson } from 'react-icons/io5';
 
 
 export const UserCard = ({ message }: { message: Message }) => {
-    return <div className='bg-white rounded-md p-4 border border-gray-300'>
+    return <div className='bg-white rounded-md p-4 border border-gray-300 opacity-90'>
         <div className="flex items-center mb-2">
             <div className="w-8 h-8 bg-gray-300 rounded-full mr-2 flex items-center justify-center"><IoPerson /></div>
             <div className="font-bold">User</div>
         </div>
-        <ReactMarkdown className="font-actor">{message.content}</ReactMarkdown>
+        <ReactMarkdown className="font-afacad text-lg">{message.content}</ReactMarkdown>
         <div>
             {message?.experimental_attachments
                 ?.filter(attachment =>

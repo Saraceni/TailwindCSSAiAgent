@@ -55,8 +55,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
-        julius: ['"Julius Sans One"', 'sans-serif'],
-        actor: ['"Actor"', 'sans-serif'],
+        gabarito: ['"Gabarito"', 'sans-serif'],
+        afacad: ['"Afacad"', 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {

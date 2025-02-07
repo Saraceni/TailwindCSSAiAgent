@@ -32,8 +32,6 @@ When answering questions about the latest version (v4) of Tailwind CSS, always c
 // set it default for the text-sm utility class
 // how do I add a default value to line height on my text-sm class?
 
-
-
 export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
